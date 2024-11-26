@@ -17,12 +17,24 @@ Including another URLconf
 
 from django.urls import path, include, re_path
 from django.views.generic import TemplateView
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 
-urlpatterns = [
+open_api_urls = [
+    path('schema.yml', SpectacularAPIView.as_view(), name='schema'),
+    # Optional UI:
+    path('swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+]
+
+api_urls = [
+    path('schema/', include(open_api_urls)),
     path('api-app_auth/', include('rest_framework.urls')),
     path('accounts/', include('accounts.urls')),
     path('app_auth/', include('app_auth.urls')),
     # path('profile/', include('user_profile.urls')),
+]
+urlpatterns = [
+    path('api/', include(api_urls)),
 ]
 
 urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]
