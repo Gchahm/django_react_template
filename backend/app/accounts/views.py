@@ -82,13 +82,6 @@ class LogoutView(APIView):
         except:
             return Response({ 'error': 'Something went wrong when logging out' })
 
-@method_decorator(ensure_csrf_cookie, name='dispatch')
-class GetCSRFToken(APIView):
-    permission_classes = (permissions.AllowAny, )
-
-    def get(self, request, format=None):
-        return Response({ 'success': 'CSRF cookie set' })
-
 class DeleteAccountView(APIView):
     def delete(self, request, format=None):
         user = self.request.user
