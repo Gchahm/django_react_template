@@ -13,8 +13,6 @@ open_api_urls = [
 api_urls = [
     path('docs/', include(open_api_urls)),
     path('auth/', include('dj_rest_auth.urls')),
-    path('app_auth/', include('app_auth.urls')),
-    # path('profile/', include('user_profile.urls')),
 ]
 urlpatterns = [
     path('api/', include(api_urls)),
