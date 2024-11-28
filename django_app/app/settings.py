@@ -60,7 +60,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'react_app']
+        'DIRS': [BASE_DIR / 'react_dist']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
