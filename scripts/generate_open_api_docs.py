@@ -10,5 +10,5 @@ if __name__ == "__main__":
     # generate the schema.yml file
     os.system(f"python {manage} spectacular --file {file}")
 
-    auto_gen_folder = os.path.join(app_dir, "react_app", "src", "api", "autogen2")
+    auto_gen_folder = os.path.join(app_dir, "react_app", "src", "api", "autogen")
     os.system("python typescript_fetch.py " + auto_gen_folder + " " + file)
